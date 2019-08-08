@@ -36,7 +36,7 @@ class PrivateKeyManipulatorTest extends \PHPUnit_Framework_TestCase
         $privateKey = PrivateKeyManipulator::importPrivateKeyFromHex(self::ADDRESS_PRIVATE_KEY, true);
 
         $this->assertNotNull($privateKey);
-        $this->assertInstanceOf('\BitWasp\Bitcoin\Key\PrivateKeyInterface', $privateKey);
+        $this->assertInstanceOf('\BitWasp\Bitcoin\Crypto\EcAdapter\Key\PrivateKeyInterface', $privateKey);
         $this->assertEquals(self::ADDRESS_PRIVATE_KEY, $privateKey->getHex());
     }
 
@@ -50,7 +50,7 @@ class PrivateKeyManipulatorTest extends \PHPUnit_Framework_TestCase
         $network = CoinSymbolNetworkMapping::getNetwork('btc-testnet');
 
         $this->assertNotNull($privateKey);
-        $this->assertInstanceOf('\BitWasp\Bitcoin\Key\PrivateKeyInterface', $privateKey);
+        $this->assertInstanceOf('\BitWasp\Bitcoin\Crypto\EcAdapter\Key\PrivateKeyInterface', $privateKey);
         $this->assertEquals(self::ADDRESS_WIF, $privateKey->toWif($network));
     }
 

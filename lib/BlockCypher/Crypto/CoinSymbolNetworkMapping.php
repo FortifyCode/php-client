@@ -2,7 +2,6 @@
 
 namespace BlockCypher\Crypto;
 
-use BitWasp\Bitcoin\Network\NetworkFactory;
 use BlockCypher\Validation\CoinSymbolValidator;
 
 /**
@@ -33,25 +32,13 @@ class CoinSymbolNetworkMapping
                 $network = NetworkFactory::litecoin();
                 break;
             case 'doge':
-                $network = NetworkFactory::create('1e', '16', '9e')
-                    ->setHDPubByte('02fd3929')
-                    ->setHDPrivByte('02fd3955')
-                    ->setNetMagicBytes('c0c0c0c0');
+                $network = NetworkFactory::dogecoin();
                 break;
             case 'dash':
-                $network = NetworkFactory::create('4c', '10', 'cc')
-                    ->setHDPubByte('02fe52f8')
-                    ->setHDPrivByte('02fe52cc')
-                    ->setNetMagicBytes('bd6b0cbf');
-                return $network;
+                $network = NetworkFactory::dash();
                 break;
             case 'bcy':
-                // TODO: check ef, 043587cf, 04358394, d9b4bef9 values
-                // not used for the time being
-                $network = NetworkFactory::create('1b', '1f', 'ef', true)
-                    ->setHDPubByte('043587cf')
-                    ->setHDPrivByte('04358394')
-                    ->setNetMagicBytes('d9b4bef9');
+                $network = NetworkFactory::bcy();
                 break;
             default:
                 throw new \Exception("Unsupported coin symbol: $coinSymbol by php-client");

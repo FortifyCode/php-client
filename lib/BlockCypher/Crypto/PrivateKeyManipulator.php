@@ -102,7 +102,7 @@ class PrivateKeyManipulator
         $network = CoinSymbolNetworkMapping::getNetwork($coinSymbol);
 
         $publicKey = $privateKey->getPublicKey();
-        $address = $publicKey->getAddress()->getAddress($network);
+        $address = $publicKey->getPubKeyHash()->getHex();
 
         return $address;
     }
